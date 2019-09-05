@@ -1,4 +1,4 @@
-package discordjsonparser
+package djp
 
 import "testing"
 
