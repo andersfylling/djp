@@ -10,15 +10,15 @@ func TestMemberReplaceUserWithID(t *testing.T) {
 	dataset := []entry{
 		{
 			[]byte(`{"members":[{"ok":true,"user":{"id":"12313"}},{"user":{"id":"2"},"ok":false},{"user":{"id":"3"}}]}`),
-			[]byte(`{"members":[{"ok":true,"id":"12313"},{"id":"2","ok":false},{"id":"3"}]}`),
+			[]byte(`{"members":[{"ok":true,"_id":"12313"},{"_id":"2","ok":false},{"_id":"3"}]}`),
 		},
 		{
 			[]byte(`{"members":[{"user":{"id":"1"}},{"user":{"id":"2"}},{"user":{"id":"3"}}]}`),
-			[]byte(`{"members":[{"id":"1"},{"id":"2"},{"id":"3"}]}`),
+			[]byte(`{"members":[{"_id":"1"},{"_id":"2"},{"_id":"3"}]}`),
 		},
 		{
 			[]byte(`{"members":[{"user":{}},{"user":{"id":"2"}},{"user":{"id":"3"}}]}`),
-			[]byte(`{"members":[{"id":""},{"id":"2"},{"id":"3"}]}`), // TODO: remove id
+			[]byte(`{"members":[{"_id":""},{"_id":"2"},{"_id":"3"}]}`), // TODO: remove id
 		},
 	}
 

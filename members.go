@@ -2,6 +2,8 @@ package djp
 
 import "github.com/buger/jsonparser"
 
+// MemberReplaceUserWithID For a slice of members, the user struct is simply replaced with `"_id":$snowflake`, where
+// $snowflake is the user_id. Note the prefix is underscore to signify custom field.
 func MemberReplaceUserWithID(data []byte, keys ...string) []byte {
 	type userKey struct {
 		offset int
@@ -23,7 +25,7 @@ func MemberReplaceUserWithID(data []byte, keys ...string) []byte {
 	}
 
 	// replace with id
-	const idPrefix = `"id":"`
+	const idPrefix = `"_id":"`
 	id := make([]byte, 0, len(idPrefix)+25)
 	id = append(id, idPrefix...)
 	for i := len(userKeys) - 1; i >= 0; i-- {
